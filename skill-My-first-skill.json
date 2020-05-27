@@ -1,0 +1,181 @@
+{
+  "intents": [
+    {
+      "intent": "Date_of_joining",
+      "examples": [
+        {
+          "text": "At Which Date the patient joined"
+        },
+        {
+          "text": "can we know the joining Date of the patients"
+        }
+      ],
+      "description": "Joining Date"
+    },
+    {
+      "intent": "Patient_Name",
+      "examples": [
+        {
+          "text": "i want to know the patient name"
+        },
+        {
+          "text": "can we know the patient name"
+        }
+      ],
+      "description": "want the name of the patient"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "problem_type",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "fever",
+          "synonyms": [
+            "fever",
+            "high fever",
+            "low fever",
+            "dengue",
+            "fevers",
+            "diarrhea",
+            "headache"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "can you please  say the name of the patient"
+              },
+              {
+                "text": "patient name,patient problem"
+              },
+              {
+                "text": "Date of the Patient joining"
+              },
+              {
+                "text": "Age of the patient"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_10_1590577608307",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "which type of plotting used for patient"
+              },
+              {
+                "text": "which entities are used "
+              },
+              {
+                "text": "okay."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "visualising  data",
+      "dialog_node": "node_8_1590578131525",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Regarding which type problem?"
+              },
+              {
+                "text": "Date of visiting ?"
+              },
+              {
+                "text": "At which time did patient visited"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "patients summary",
+      "dialog_node": "node_10_1590577608307",
+      "previous_sibling": "node_8_1590578131525"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
