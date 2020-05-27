@@ -1,0 +1,37 @@
+import seaborn as sns
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+sns.set(style = 'darkgrid')
+
+med= sns.load_dataset('medical.csv')
+med.head(5)
+med.tail()
+sns.relplot(x = 'PATIENT', y = 'TEST', data = med)
+
+sns.relplot(x = 'PATIENT', y = 'TEST', data = med, hue = 'AMOUNT') this will show deep details of data.
+tips['sex'].value_counts() this will show count of any data related to that.
+sns.relplot(x = 'PATIENT', y = 'TEST', data = med, size = 'size', sizes = (50, 200))to increase the size of plot.
+
+To Plot range code:
+from numpy.random import randn
+df = pd.DataFrame(dict(time = np.arange(300), value = randn(300).cumsum()))
+df.head() if we want particular data...or else we will continue with the existing dataset.
+sns.relplot(x = 'time', y = 'value', kind = 'line', data = df) here y axis will be the value with which assinged in range function.
+sns.relplot(x = 'PATIENT', y = 'TEST', hue = 'DATE', style = 'smoker', kind = 'line', data = med, markers = True, dashes = False) which will mark the points.
+sns.relplot(x = 'total_bill', y = 'tip', estimator = None, hue = 'size', kind = 'line', data = med) which will give balance graph.
+For finding the time period:
+df = pd.DataFrame(dict(time = pd.date_range('2020-01-01', periods = 500), value =  randn(600).cumsum()))
+df.head(5)
+To graph the plot of time period:
+a = sns.relplot(x = 'time', y = 'value', kind = 'line', data = df)
+a.fig.autofmt_xdate()
+To Plot according to time the related x,y axis,can also define according to vary of col grid,row grid makes visible of graphs in row wise:
+sns.relplot(x = 'PATIENT', y = 'DATE', hue = 'AMOUNT', col = 'time', data = med)
+Will make coloumn height:
+sns.relplot(x = 'PATIENT', y = 'DATE', hue = 'AMOUNT', col = 'time', data = med, col wrap=4)
+
+
+
